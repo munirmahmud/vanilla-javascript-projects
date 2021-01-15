@@ -39,6 +39,14 @@ newQuote.addEventListener('click', getQuote);
 getQuote();
 
 
+// Share quote on Twitter
+function shareQuoteOnTwitter() {
+    const quote = quoteContent.innerText;
+    const author = authorName.innerText;
+    const twitterUrl = `https://twitter.com/intent/tweet/?text=${quote} - ${author}`;
 
+    window.open(twitterUrl);
+}
 
+twitterBtn.addEventListener('click', shareQuoteOnTwitter);
 
