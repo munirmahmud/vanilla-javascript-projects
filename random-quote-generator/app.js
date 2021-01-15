@@ -4,10 +4,25 @@ const quoteContent = quoteContainer.querySelector('#quote');
 const authorName = quoteContainer.querySelector('#author');
 const twitterBtn = quoteContainer.querySelector('#twitter');
 const newQuote = quoteContainer.querySelector('#new-quote');
+const loader = document.querySelector('#loader');
 
+// Show Loading
+function loading() {
+    loader.hidden = false;
+    quoteContainer.hidden = true;
+}
+
+// Hide Loading
+function hideLoading() {
+    if(!loader.hidden) {
+        quoteContainer.hidden = false;
+        loader.hidden = true;
+    }
+}
 
 // Get Quote From API
 async function getQuote() {
+    loading();
     const proxy = 'https://cors-anywhere.herokuapp.com/'
     const url = 'https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
 
@@ -28,16 +43,18 @@ async function getQuote() {
         }
 
         authorName.innerText = data.quoteAuthor;
+
+        // Stop loader and show quote
+        hideLoading();
     } catch (error) {
         getQuote();
 
-        console.log(`Whoops, no quote ${error}`);
+        // console.log(`Whoops, no quote ${error}`);
     }
 }
 
 newQuote.addEventListener('click', getQuote);
 getQuote();
-
 
 // Share quote on Twitter
 function shareQuoteOnTwitter() {
