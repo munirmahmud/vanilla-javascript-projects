@@ -6,14 +6,12 @@ const twitterBtn = quoteContainer.querySelector('#twitter');
 const newQuote = quoteContainer.querySelector('#new-quote');
 const loader = document.querySelector('#loader');
 
-// Show Loading
-function loading() {
+function showLoadingSpinner() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
-// Hide Loading
-function hideLoading() {
+function removeLoadingSpinner() {
     if(!loader.hidden) {
         quoteContainer.hidden = false;
         loader.hidden = true;
@@ -22,7 +20,9 @@ function hideLoading() {
 
 // Get Quote From API
 async function getQuote() {
-    loading();
+    showLoadingSpinner();
+
+    // We need to use a Proxy URL to make our API call in order to avoid CORS Policy
     const proxy = 'https://cors-anywhere.herokuapp.com/'
     const url = 'https://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json';
 
@@ -38,6 +38,7 @@ async function getQuote() {
             quoteContent.classList.remove('long-quote');
         }
 
+        // Check if Author field is blank and replace it with Unknown
         if(data.quoteAuthor === "") {
             authorName.innerText = "Unknown";
         }
@@ -45,11 +46,13 @@ async function getQuote() {
         authorName.innerText = data.quoteAuthor;
 
         // Stop loader and show quote
-        hideLoading();
-    } catch (error) {
-        getQuote();
+        removeLoadingSpinner();
 
-        // console.log(`Whoops, no quote ${error}`);
+        throw new Error('ooops');
+    } catch (error) {
+        console.log(`Whoops, no quote ${error}`);
+        
+        getQuote();
     }
 }
 
