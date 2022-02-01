@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(233, 233, 233);
+}
+
+.wrapper {
+  width: 450px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  margin: 0 auto;
+}
+
+[role="tablist"] {
+  display: flex;
+  align-items: center;
+}
+button[role="tab"] {
+  border: 1px solid rgb(218, 218, 218);
+  background-color: rgb(233, 233, 233);
+  padding: 8px 18px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  flex: 1;
+}
+button[aria-selected="true"] {
+  background-color: blueviolet;
+  color: white;
+}

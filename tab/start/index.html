@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tab with Vanilla JavaScript</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="tabs" role="tabs" aria-label="Coffee Lists">
+        <div role="tablist">
+          <button role="tab" aria-selected="true" id="americano">Americano</button>
+          <button role="tab" aria-selected="false" id="espresso">Espresso</button>
+          <button role="tab" aria-selected="false" id="cappuccino">Cappuccino</button>
+        </div>
+
+        <div role="tabpanel" aria-labelledby="americano">
+          <h2>Americano</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sapiente explicabo officia molestias ducimus quibusdam.</p>
+        </div>
+        <div role="tabpanel" aria-labelledby="espresso" hidden>
+          <h2>Espresso</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sapiente explicabo officia molestias ducimus quibusdam.</p>
+        </div>
+        <div role="tabpanel" aria-labelledby="cappuccino" hidden>
+          <h2>Cappuccino</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sapiente explicabo officia molestias ducimus quibusdam.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
