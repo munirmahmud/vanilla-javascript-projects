@@ -32,6 +32,8 @@ a:hover {
 }
 button {
   cursor: pointer;
+  border: 0;
+  background-color: transparent;
 }
 
 .container {
@@ -94,9 +96,11 @@ header {
 }
 
 /* TODO ITEMS */
-.todo-items {
+.todo-items-wrapper {
   background-color: var(--very-dark-grayish-blue2);
   border-radius: 8px;
+}
+.todo-items {
   list-style: none;
 }
 
@@ -128,6 +132,11 @@ header {
   display: flex;
   align-items: center;
   color: var(--light-grayish-blue2);
+  cursor: pointer;
+}
+.todo-left.completed {
+  text-decoration: line-through;
+  opacity: 0.4;
 }
 
 .todo-left input[type="checkbox"] {
@@ -156,7 +165,7 @@ header {
   transition: color 0.3s ease-in-out;
 }
 .footer-menus li:hover,
-.footer-menus li.active {
+.footer-menus li.selected {
   color: #5083f5;
 }
 
